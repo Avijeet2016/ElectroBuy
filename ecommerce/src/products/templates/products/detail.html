@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+{% block title%} Product details {% endblock %}
+<!-- 
+
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <h1 class="text-center">{{ object.title }}</h1><br> 
+
+                <p class="text-center">TK. {{ object.price }}</p> 
+
+                <img src="{{ object.image.url }}" alt="TV images goes here" class="img-fluid" style="height: 300px ; width: 700px;">
+
+                <p class="text-center">{{ object.timestamp|timesince }} ago</p>
+                {{ object.description | linebreaks }}<br>
+                
+            </div>
+            <div class="col-12 col-md-4">
+                {% include 'products/snippets/update-cart.html' with product=object cart=cart %}
+            </div>
+        </div>
+
+    
+
+ -->
+
+{% block content %}
+<div class="row">
+    <div class="col-12 col-md-5 " style="margin-top: 80px">
+        <img src="{{ object.image.url }}" alt="{{ object.title }} logo.." class="img-fluid">
+
+        
+    </div>
+    <div class="col-12 col-md-7 ml-auto">
+            <h2>{{ object.title }}</h2>
+            {% include 'products/snippets/update-cart.html' with product=object cart=cart %}
+
+            <p><b>TK. </b>{{ object.price }}</p> 
+        
+            <p>{{ object.timestamp|timesince }} ago</p><hr>
+            {{ object.description | linebreaks }}<br>
+
+
+        
+    </div>
+</div>
+
+{% endblock %}

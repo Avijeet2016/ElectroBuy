@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% url 'category_list' as category_list %}
+
+{% load static %} 
+
+{% block base_head %}<link rel="stylesheet" href='{% static "css/main.css" %}'>{% endblock %}
+
+<title>Home Page</title>
+
+{% block title%} Home page {% endblock %}
+
+{% block content %}
+
+<div class="row" style="margin-top: 50px">
+    <div class="col-sm-9 blog-main">
+        <div class="row">
+            {% for p in product %}
+                <div class="col-md-4">
+                    <div class="thumbnail" style="border: 1px solid #ddd">
+                        {% if p.image %}
+                        <a href="{{ p.get_absolute_url }}" >
+                            <img src="{{ p.image.url }} " alt="{{ p.title }} logo" style="height: 180px; width: 200px" >
+                        </a>
+                        {% endif %}
+                        <div class="caption">
+                            <h3 class="text-center">
+                                <a href="{{ p.get_absolute_url }}">{{ p.title }}</a>
+                            </h3>
+                            <p class="text-center"><small>{{ p.category }}</small></p>
+                            
+                            <p class="text-center">TK. {{ p.price }}</p>
+                        </div>
+                    </div> &nbsp
+                  </div>
+                </hr>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-sm-3  blog-sidebar">
+        
+
+        <div class="card border-light mb-3">
+            <div class="card-header" style="background-color: #363C42; padding: 4px;"><h2 style="color: white;" class="text-center">Categories</h2></div>
+                <div class="body" style="margin-top: 10px;">
+                     
+                    {% for c in category %}
+                    <ul>
+                        <li style="list-style: none"><a href="{{ c.get_absolute_url }}">&nbsp;&nbsp;{{ c.name }}</a></li><hr>
+                    </ul>
+                        
+                    {% endfor %}
+                     
+                        <!-- <ul >
+                                <li style="list-style:none"><a href="#">HomeAbout</a></li>
+                                <li style="list-style:none"><a href="#">HomeAbout</a></li>
+                                <li style="list-style:none"><a href="#">HomeAbout</a></li>
+                                <li style="list-style:none"><a href="#">HomeAbout</a></li>
+                                <li style="list-style:none"><a href="#">HomeAbout</a></li>
+                                <li style="list-style:none"><a href="#">HomeAbout</a></li>
+                        </ul>  -->
+                </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title%} Products by category {% endblock %}
+
+{% block content %}
+
+<h3 class="text-center"><b>Category : </b>{{ category }}</h3><hr>
+
+
+<div class="row">
+    <div class="col-12">
+            <div class="row">
+                    {% for p in products %}
+                    <div class="col-md-4">
+                        <div class="thumbnail" style="border: 1px solid #ddd">
+                            {% if p.image %}
+                            <a href="{{ p.get_absolute_url }}" >
+                                <img src="{{ p.image.url }} " alt="{{ p.title }} logo" style="height: 180px; width: 200px" >
+                            </a>
+                            {% endif %}
+                            <div class="caption">
+                                <h3 class="text-center">
+                                    <a href="{{ p.get_absolute_url }}">{{ p.title }}</a>
+                                </h3>
+                                <p class="text-center"><small>{{ p.category }}</small></p>
+                                
+                                <p class="text-center">TK. {{ p.price }}</p>
+                            </div>
+                        </div> &nbsp
+                      </div>
+                    </hr>
+                {% endfor %}
+            </div>
+    </div>
+    
+</div>
+
+
+
+
+
+{% endblock %}

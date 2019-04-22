@@ -1,0 +1,6 @@
+hello
+{% for t in tags %}
+    <ul>
+        <li style="list-style: none;"><a href="{% url 'products:p-by-tag' t.title %}" style="text-decoration: none;">{{ t.title }}</a></li>
+    </ul>
+{% endfor %}
